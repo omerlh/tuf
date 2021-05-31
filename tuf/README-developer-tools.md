@@ -12,7 +12,9 @@
 - [Managing Targets](#managing_targets)
 
 <a name="overview">
+  
 ## Overview
+  
 The Update Framework (TUF) is a Python-based security system for software
 updates. In order to prevent your users from downloading vulnerable or malicious
 code disguised as updates to your software, TUF requires that each update you
@@ -33,12 +35,14 @@ the full functionality of the tools, which offer a finer degree of control in
 securing your project.
 
 <a name="creating_a_simple_project">
+  
 ## Creating a Simple Project
 This section walks through the creation of a small example project with just
 one target. Once created, this project will be fully functional, and can be
 modified as needed.
 
 <a name="generating_a_key">
+  
 ### Generating a Key
 First, we will need to generate a key to sign the metadata. Keys are generated
 in pairs: one public and the other private. The private key is
@@ -69,6 +73,7 @@ In this example we will be using rsa keys, but ed25519 keys are also supported.
 Now we have a key for our project, we can proceed to create our project.
 
 <a name="the_project_class">
+  
 ### The Project Class
 The TUF developer tool is built around the Project class, which is used to
 organize groups of targets associated with a single set of metadata. A single
@@ -131,6 +136,7 @@ generating a signature with our private key so it can be verified with the
 public key by the server (upon uploading) and by the clients (when updating).
 
 <a name="signing_and_writing_the_metadata">
+  
 ### Signing and Writing the Metadata ###
 In order to sign the metadata, we need to import the private key corresponding
 to the public key we added to the project. One the key is loaded to the project,
@@ -160,6 +166,7 @@ several contributors, you may want to consider adding
 [delegations](#delegations) to your project.
 
 <a name="loading_an_existing_project">
+  
 ## Loading an Existing Project
 To make changes to existing metadata, we will need the Project again. We can
 restore it with the load_project() function.
@@ -182,6 +189,7 @@ If your project does not use any delegations, the five commands above are all
 you need to update your project's metadata.
 
 <a name="delegations">
+  
 ## Delegations
 
 The project we created above is secured entirely by one key. If you want to
@@ -249,6 +257,7 @@ Delegations can be revoked, removing the delegated role from the project.
 ```
 
 <a name="managing_keys">
+  
 ## Managing Keys
 This section describes the key-related functions and parameters not covered in
 the [Creating a Simple Project](#creating_a_simple_project) section.
@@ -264,6 +273,7 @@ The bits parameter defaults to 3072, and values below 2048 will raise an error.
 The password parameter is only intended to be used in scripts.
 
 <a name="adding_a_key_to_a_delegation">
+  
 ### Adding a Key to a Delegation
 New verifications keys can be added to an existing delegation using
 add\_verification\_key():
@@ -300,6 +310,7 @@ replaced by removing it and adding a new key, in that order.
 ```
 
 <a name="delegation_thresholds">
+  
 ### Delegation Thresholds
 
 Every delegated role has a threshold, which determines how many of its signing
@@ -314,6 +325,7 @@ threshold can be accessed as a property of a delegated role.
 The above line will set the "rolename" role's threshold to 2.
 
 <a name="managing_targets">
+  
 ## Managing Targets
 There are supporting functions of the targets library to make the project
 maintenance easier. These functions are described in this section.
